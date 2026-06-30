@@ -15,6 +15,16 @@ class User(Base):
 
     inventory = relationship("Inventory", back_populates="owner")
 
+class Product(Base):
+    __tablename__ = "products"
+
+    id = Column(Integer, primary_key=True, index=True)
+    barcode = Column(String, unique=True, nullable=False)
+    product_name = Column(String, nullable=False)
+    brand = Column(String)
+    category = Column(String)
+    image_url = Column(String)
+
 class Inventory(Base):
     __tablename__ = "inventory"
 

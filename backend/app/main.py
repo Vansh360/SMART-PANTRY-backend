@@ -6,6 +6,7 @@ import app.models
 from app.routers.user import router as user_router
 from app.routers.inventory import router as inventory_router
 from app.routers.barcode import router as barcode_router
+from app.routers.product import router as product_router
 
 Base.metadata.create_all(bind=engine)
 
@@ -16,12 +17,10 @@ app = FastAPI(
 app.include_router(user_router)
 app.include_router(inventory_router)
 app.include_router(barcode_router)
+app.include_router(product_router)
 
 @app.get("/")
 def home():
     return {
         "message": "Smart Pantry API Running"
     }
-
-
-app.include_router(barcode_router)

@@ -22,6 +22,19 @@ class Token(BaseModel):
     access_token: str
     token_type: str
 
+class ProductCreate(BaseModel):
+    barcode: str
+    product_name: str
+    brand: str
+    category: str
+    image_url: str | None = None
+
+class ProductResponse(ProductCreate):
+    id: int
+
+    class Config:
+        from_attributes = True
+
 class InventoryCreate(BaseModel):
     item_name: str
     category: str
